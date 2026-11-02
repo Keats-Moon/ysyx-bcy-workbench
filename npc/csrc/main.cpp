@@ -24,17 +24,13 @@ int main(int argc, char ** argv){
         while(1){
                 nvboard_update();
 
-                int a = rand() & 1;
-                int b = rand() & 1;
-                top -> a = a;
-                top -> b = b;
                 top -> eval();
-
                 ctx -> timeInc(1);
                 tfp->dump(ctx->time());
 
-                printf("a=%d, b=%d, f=%d\n", a, b, top ->f);
-                assert(top -> f == (a ^ b));
+                printf("a=%d, b=%d, f=%d\n", top -> a, top -> b, top ->f);
+                assert(top -> f == (top->a ^ top->b));
+
         }
         tfp -> close();
         delete tfp;
